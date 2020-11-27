@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>KYS</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
+
+	 <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+</head>
+
+<body>
+	<header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"> <a class="nav-link" href="index.html">Anasayfa <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"> <a class="nav-link" href="Competitions">Yarışmalar</a></li>
+            <li class="nav-item"><a class="nav-link" href="Members">Üyeler</a></li>
+            <li class="nav-item"><a class="nav-link" href="admin/login/">Oturum Aç</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+	<!-- WRAPPER -->
+	<div id="container-fluid">
+		
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>Anasayfa</span></a></li>
+						<li><a href="#" class=""><i class="lnr lnr-code"></i> <span>Yarışmalar</span></a></li>
+				<li><a href="competitorRegister" class=""><i class="lnr lnr-code"></i> <span>Üyeler</span></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+		<!-- MAIN -->
+		<div class="container" style="padding-top: 50px;">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<!-- OVERVIEW -->
+					<div class="panel panel-headline">
+						<div class="panel-heading">
+							<!-- BASIC TABLE -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h4 class="panel-title">Üye Listesi</h4>
+								</div>
+								<div class="grid">
+									{% if Members %}
+
+									<table class="table">
+										<thead>
+											<tr>
+												<th>TC Kimlik No</th>
+												<th>Ad</th>
+												 <th scope="col">Soyad</th>
+												
+												<th style="text-align: center;">Detay</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for Member in Members %}
+										<tr>
+												<td>{{Member.tcNumber}}</td>
+												<td>{{Member.name}}</td>
+      											<td>{{Member.surname}}</td>
+
+												<td  style="text-align: center;" ><a  class="btn btn-primary" data-toggle="collapse" href="#{{Member.tcNumber}}" role="button">Detay Göster</a></td>
+
+								
+												<thead class="collapse coklu_eleman" id={{Member.tcNumber}}>
+												<tr>
+												      <th scope="col">Okul</th>
+													      <th scope="col">Bölüm</th>
+													      <th scope="col">Durum</th>
+											  </tr>
+											
+											  
+											  <tr>
+												<td>{{Member.school}}</td>
+												<td>{{Member.faculty}}</td>
+												<td>{{Member.compeleted}}</td>
+
+												
+												</tr>
+ 												 </thead>
+											
+											
+													
+											
+											{% endfor %}
+												</tr>	
+										</tbody>
+
+									</table>
+
+
+									{% else %}
+									<div class="alert alert-danger">Hata Herhangi bir veri okunamadı....</div>
+									{% endif %}
+									<div style="padding-top: 20px;"><a href="competitorRegister">Yeni Üye Ekle</a></div>
+									
+								</div>
+							</div>
+							<!-- END BASIC TABLE -->
+							
+						</div>
+					
+					</div>
+					<!-- END OVERVIEW -->
+					
+					
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
